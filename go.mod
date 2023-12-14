@@ -1,4 +1,4 @@
-module utils
+module github.com/bgq98/utils
 
 go 1.20
 
