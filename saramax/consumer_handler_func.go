@@ -5,7 +5,7 @@ import (
 
 	"github.com/IBM/sarama"
 
-	"utils/logger"
+	"github.com/bgq98/utils/logger"
 )
 
 /**
