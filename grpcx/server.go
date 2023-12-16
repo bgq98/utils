@@ -14,12 +14,12 @@ import (
 
 type Server struct {
 	*grpc.Server
-	Port    string
+	Addr    string
 	Network string
 }
 
 func (s *Server) Serve() error {
-	l, err := net.Listen(s.Network, s.Port)
+	l, err := net.Listen(s.Network, s.Addr)
 	if err != nil {
 		panic(err)
 	}
