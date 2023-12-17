@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c578093-3a58-4997-b485-9bee9cb14fef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mongox/prometheus/plugin.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/redisx/trace/tracing.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redisx/prometheus.go" beforeDir="false" afterPath="$PROJECT_DIR$/redisx/metrics/prometheus.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gormx/callbacks/prometheus/prometheus.go" beforeDir="false" afterPath="$PROJECT_DIR$/gormx/callbacks/prometheus/prometheus.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +45,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2ZZvyl38mPLj7EG30sVwgPsZdsF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

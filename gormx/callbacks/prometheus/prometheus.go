@@ -18,7 +18,7 @@ type Callbacks struct {
 	vector *promsdk.SummaryVec
 }
 
-func newCallbacks() *Callbacks {
+func NewCallbacks() *Callbacks {
 	vector := promsdk.NewSummaryVec(promsdk.SummaryOpts{
 		Namespace: "bgq",
 		Subsystem: "webook",
