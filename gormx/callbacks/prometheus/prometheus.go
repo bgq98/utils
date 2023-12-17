@@ -42,7 +42,7 @@ func NewCallbacks() *Callbacks {
 	return pcb
 }
 
-func (c *Callbacks) registerAll(db *gorm.DB) {
+func (c *Callbacks) RegisterAll(db *gorm.DB) {
 	err := db.Callback().Create().Before("*").
 		Register("prometheus_create_before", c.before())
 	if err != nil {
