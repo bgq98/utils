@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5c578093-3a58-4997-b485-9bee9cb14fef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gormx/callbacks/prometheus/prometheus.go" beforeDir="false" afterPath="$PROJECT_DIR$/gormx/callbacks/prometheus/prometheus.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongox/prometheus/plugin.go" beforeDir="false" afterPath="$PROJECT_DIR$/mongox/prometheus/plugin.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

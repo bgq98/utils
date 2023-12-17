@@ -6,6 +6,7 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 	"go.mongodb.org/mongo-driver/event"
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
@@ -32,11 +33,10 @@ type MongoPluginMonitor struct {
 	ctx    context.Context
 }
 
-func NewMongoPluginMonitor(vector *prometheus.SummaryVec,
-	tracer trace.Tracer, l logger.Logger) *MongoPluginMonitor {
+func NewMongoPluginMonitor(vector *prometheus.SummaryVec, l logger.Logger) *MongoPluginMonitor {
 	return &MongoPluginMonitor{
 		vector: vector,
-		tracer: tracer,
+		tracer: otel.GetTracerProvider().Tracer("github.com/bgq98/utils/mongox/prometheus"),
 		l:      l,
 	}
 }
