@@ -14,46 +14,9 @@
    limitations under the License.
 */
 
-package logger
+package slice
 
-func String(key, val string) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
+// equalFunc 比较两个元素是否相等
+type equalFunc[T interface{}] func(src, dst T) bool
 
-func Error(err error) Field {
-	return Field{
-		Key:   "error",
-		Value: err,
-	}
-}
-
-func Any(key string, val any) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int64(key string, val int64) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int32(key string, val int32) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Bool(key string, b bool) Field {
-	return Field{
-		Key:   key,
-		Value: b,
-	}
-}
+type matchFunc[T interface{}] func(src T) bool

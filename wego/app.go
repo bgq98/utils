@@ -14,46 +14,16 @@
    limitations under the License.
 */
 
-package logger
+package wego
 
-func String(key, val string) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
+import (
+	"github.com/bgq98/utils/ginx"
+	"github.com/bgq98/utils/grpcx"
+	"github.com/bgq98/utils/saramax"
+)
 
-func Error(err error) Field {
-	return Field{
-		Key:   "error",
-		Value: err,
-	}
-}
-
-func Any(key string, val any) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int64(key string, val int64) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int32(key string, val int32) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Bool(key string, b bool) Field {
-	return Field{
-		Key:   key,
-		Value: b,
-	}
+type App struct {
+	GRPCServer *grpcx.Server
+	WebServer  *ginx.Server
+	Consumers  []saramax.Consumer
 }

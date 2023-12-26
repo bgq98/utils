@@ -14,46 +14,19 @@
    limitations under the License.
 */
 
-package logger
+package events
 
-func String(key, val string) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
+type InconsistentEvent struct {
+	Id        int64
+	Direction string // 以哪个源为准 SRC 源表为准 DST 目标表为准
+	Type      string
 }
 
-func Error(err error) Field {
-	return Field{
-		Key:   "error",
-		Value: err,
-	}
-}
-
-func Any(key string, val any) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int64(key string, val int64) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int32(key string, val int32) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Bool(key string, b bool) Field {
-	return Field{
-		Key:   key,
-		Value: b,
-	}
-}
+const (
+	// InconsistentEventTypeTargetMissing target 中没有数据
+	InconsistentEventTypeTargetMissing = "target_missing"
+	// InconsistentEventTypeNotEqual 目标表和源表的数据不相等
+	InconsistentEventTypeNotEqual = "neq"
+	// InconsistentEventTypeBaseMissing base 中没有数据
+	InconsistentEventTypeBaseMissing = "base_missing"
+)

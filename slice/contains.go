@@ -14,46 +14,21 @@
    limitations under the License.
 */
 
-package logger
+package slice
 
-func String(key, val string) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
+func Contains[T comparable](src []T, dst T) bool {
+	return ContainsFunc[T](src, func(src T) bool {
+		return src == dst
+	})
 }
 
-func Error(err error) Field {
-	return Field{
-		Key:   "error",
-		Value: err,
+// ContainsFunc 判断 src 里面是否存在 dst
+// 考虑优先使用 Contains
+func ContainsFunc[T interface{}](src []T, equal func(src T) bool) bool {
+	for _, v := range src {
+		if equal(v) {
+			return true
+		}
 	}
-}
-
-func Any(key string, val any) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int64(key string, val int64) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int32(key string, val int32) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Bool(key string, b bool) Field {
-	return Field{
-		Key:   key,
-		Value: b,
-	}
+	return false
 }

@@ -1,3 +1,19 @@
+/*
+   Copyright 2023 bgq98
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
 package prometheus
 
 import (
@@ -8,41 +24,36 @@ import (
 	promsdk "github.com/prometheus/client_golang/prometheus"
 )
 
-/**
-   @author：biguanqun
-   @since： 2023/12/17
-   @desc：
-**/
-
 type Callbacks struct {
-	vector *promsdk.SummaryVec
+	Namespace  string
+	Subsystem  string
+	Name       string
+	InstanceID string
+	Help       string
+	vector     *promsdk.SummaryVec
 }
 
-func NewCallbacks() *Callbacks {
-	vector := promsdk.NewSummaryVec(promsdk.SummaryOpts{
-		Namespace: "bgq",
-		Subsystem: "webook",
-		Name:      "gorm_query_time",
-		Help:      "统计 gorm 语句的执行时间",
-		ConstLabels: map[string]string{
-			"db": "webook",
-		},
-		Objectives: map[float64]float64{
-			0.5:   0.01,
-			0.9:   0.01,
-			0.99:  0.005,
-			0.999: 0.0001,
-		},
-	}, []string{"typ", "table"})
-
-	pcb := &Callbacks{
-		vector: vector,
-	}
+func (c *Callbacks) Register(db *gorm.DB) error {
+	vector := promsdk.NewSummaryVec(
+		promsdk.SummaryOpts{
+			Namespace: c.Namespace,
+			Subsystem: c.Subsystem,
+			Name:      c.Name,
+			Help:      c.Help,
+			ConstLabels: map[string]string{
+				"db_name":     db.Name(),
+				"instance_id": c.InstanceID,
+			},
+			Objectives: map[float64]float64{
+				0.5:   0.01,
+				0.9:   0.01,
+				0.99:  0.005,
+				0.999: 0.0001,
+			},
+		}, []string{"typ", "table"})
 	promsdk.MustRegister(vector)
-	return pcb
-}
+	c.vector = vector
 
-func (c *Callbacks) RegisterAll(db *gorm.DB) {
 	err := db.Callback().Create().Before("*").
 		Register("prometheus_create_before", c.before())
 	if err != nil {
@@ -102,7 +113,7 @@ func (c *Callbacks) RegisterAll(db *gorm.DB) {
 	if err != nil {
 		panic(err)
 	}
-
+	return nil
 }
 
 func (c *Callbacks) before() func(db *gorm.DB) {

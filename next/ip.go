@@ -14,46 +14,17 @@
    limitations under the License.
 */
 
-package logger
+package next
 
-func String(key, val string) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
+import "net"
 
-func Error(err error) Field {
-	return Field{
-		Key:   "error",
-		Value: err,
+func GetOutboundIp() string {
+	conn, err := net.Dial("udp", "8.8.8.8:80")
+	if err != nil {
+		return ""
 	}
-}
+	defer conn.Close()
 
-func Any(key string, val any) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int64(key string, val int64) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Int32(key string, val int32) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
-}
-
-func Bool(key string, b bool) Field {
-	return Field{
-		Key:   key,
-		Value: b,
-	}
+	localAddr := conn.LocalAddr().(*net.UDPAddr)
+	return localAddr.IP.String()
 }

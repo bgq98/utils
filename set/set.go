@@ -14,46 +14,42 @@
    limitations under the License.
 */
 
-package logger
+package set
 
-func String(key, val string) Field {
-	return Field{
-		Key:   key,
-		Value: val,
+type Set[T comparable] interface {
+	Add(key T)
+	Delete(key T)
+	Exist(key T) bool
+	Keys() []T
+}
+
+type MapSet[T comparable] struct {
+	m map[T]struct{}
+}
+
+func NewMapSet[T comparable](size int) *MapSet[T] {
+	return &MapSet[T]{
+		m: make(map[T]struct{}, size),
 	}
 }
 
-func Error(err error) Field {
-	return Field{
-		Key:   "error",
-		Value: err,
-	}
+func (m *MapSet[T]) Add(key T) {
+	m.m[key] = struct{}{}
 }
 
-func Any(key string, val any) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
+func (m *MapSet[T]) Delete(key T) {
+	delete(m.m, key)
 }
 
-func Int64(key string, val int64) Field {
-	return Field{
-		Key:   key,
-		Value: val,
-	}
+func (m *MapSet[T]) Exist(key T) bool {
+	_, ok := m.m[key]
+	return ok
 }
 
-func Int32(key string, val int32) Field {
-	return Field{
-		Key:   key,
-		Value: val,
+func (m *MapSet[T]) Keys() []T {
+	ans := make([]T, 0, len(m.m))
+	for keys := range m.m {
+		ans = append(ans, keys)
 	}
-}
-
-func Bool(key string, b bool) Field {
-	return Field{
-		Key:   key,
-		Value: b,
-	}
+	return ans
 }

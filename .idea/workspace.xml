@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c578093-3a58-4997-b485-9bee9cb14fef" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongox/prometheus/plugin.go" beforeDir="false" afterPath="$PROJECT_DIR$/mongox/prometheus/plugin.go" afterDir="false" />
-    </list>
+    <list default="true" id="5c578093-3a58-4997-b485-9bee9cb14fef" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go File" />
+        <option value="go_github" />
       </list>
     </option>
   </component>
@@ -26,6 +24,19 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../pkg/mod/go.mongodb.org/mongo-driver@v1.9.0/event/monitoring.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/../../pkg/mod/go.opentelemetry.io/otel/trace@v1.21.0/noop/noop.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/ginx/handler_func.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/ginx/middlewares/ratelimit/types.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/gormx/connpool/doublewrite.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/gormx/connpool/doublewrite_test.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/migrator/validator/types.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/saramax/batch_handler_func.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/saramax/consumer_handler_func.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/saramax/types.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/set/set_test.go" root0="SKIP_INSPECTION" />
   </component>
   <component name="KubernetesApiProvider">{
   &quot;contexts&quot;: [
@@ -55,6 +66,13 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Test.DoubleWriteTestSuite in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestDoubleWrite in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestNewValueOf in github.com/bgq98/utils/syncx/atomicx.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestSetx_Delete in github.com/bgq98/utils/set.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestValue_CompareAndSwap in github.com/bgq98/utils/syncx/atomicx.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
@@ -65,7 +83,8 @@
     &quot;last_opened_file_path&quot;: &quot;/Users/biguanqun/go/src/utils&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -73,8 +92,83 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/redisx/metrics" />
     </key>
+  </component>
+  <component name="RunManager" selected="Go Test.TestSetx_Delete in github.com/bgq98/utils/set">
+    <configuration name="DoubleWriteTestSuite in github.com/bgq98/utils/gormx/connpool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="utils" />
+      <working_directory value="$PROJECT_DIR$/gormx/connpool" />
+      <parameters value=" -testify.m ^TestDoubleWriteTest|TestDoubleWriteTransaction$" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/bgq98/utils/gormx/connpool" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestDoubleWrite\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestDoubleWrite in github.com/bgq98/utils/gormx/connpool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="utils" />
+      <working_directory value="$PROJECT_DIR$/gormx/connpool" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/bgq98/utils/gormx/connpool" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestDoubleWrite\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="utils" />
+      <working_directory value="$PROJECT_DIR$/gormx/connpool" />
+      <parameters value=" -testify.m ^TestDoubleWriteTest$" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/bgq98/utils/gormx/connpool" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestDoubleWrite\E$/^\QTestDoubleWriteTest\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="utils" />
+      <working_directory value="$PROJECT_DIR$/gormx/connpool" />
+      <parameters value=" -testify.m ^TestDoubleWriteTransaction$" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/bgq98/utils/gormx/connpool" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestDoubleWrite\E$/^\QTestDoubleWriteTransaction\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestSetx_Delete in github.com/bgq98/utils/set" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="utils" />
+      <working_directory value="$PROJECT_DIR$/set" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/bgq98/utils/set" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestSetx_Delete\E$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestSetx_Delete in github.com/bgq98/utils/set" />
+        <item itemvalue="Go Test.TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool" />
+        <item itemvalue="Go Test.TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool" />
+        <item itemvalue="Go Test.DoubleWriteTestSuite in github.com/bgq98/utils/gormx/connpool" />
+        <item itemvalue="Go Test.TestDoubleWrite in github.com/bgq98/utils/gormx/connpool" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
