@@ -20,16 +20,16 @@ import "sync/atomic"
 
 // value 是对 atomic.Value 的泛型封装
 
-type Value[T any] struct {
+type Value[T interface{}] struct {
 	val atomic.Value
 }
 
-func NewValue[T any]() *Value[T] {
+func NewValue[T interface{}]() *Value[T] {
 	var t T
 	return NewValueOf[T](t)
 }
 
-func NewValueOf[T any](t T) *Value[T] {
+func NewValueOf[T interface{}](t T) *Value[T] {
 	val := atomic.Value{}
 	val.Store(t)
 	return &Value[T]{

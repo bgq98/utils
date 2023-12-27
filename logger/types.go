@@ -25,5 +25,5 @@ type Logger interface {
 
 type Field struct {
 	Key   string
-	Value any
+	Value interface{}
 }

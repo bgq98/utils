@@ -30,7 +30,7 @@ func Error(err error) Field {
 	}
 }
 
-func Any(key string, val any) Field {
+func Any(key string, val interface{}) Field {
 	return Field{
 		Key:   key,
 		Value: val,

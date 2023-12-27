@@ -32,7 +32,7 @@ import (
    @desc：
 **/
 
-type BatchHandler[T any] struct {
+type BatchHandler[T interface{}] struct {
 	l  logger.Logger
 	fn func(msgs []*sarama.ConsumerMessage, t []T) error
 	// 用 option 模式来设置这个 batchSize 和 duration
@@ -40,7 +40,7 @@ type BatchHandler[T any] struct {
 	batchDuration time.Duration
 }
 
-func NewBatchHandler[T any](l logger.Logger,
+func NewBatchHandler[T interface{}](l logger.Logger,
 	fn func(msgs []*sarama.ConsumerMessage, t []T) error) *BatchHandler[T] {
 	return &BatchHandler[T]{
 		l:             l,

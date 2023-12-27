@@ -30,12 +30,12 @@ import (
    @desc：
 **/
 
-type Handler[T any] struct {
+type Handler[T interface{}] struct {
 	l  logger.Logger
 	fn func(msg *sarama.ConsumerMessage, t T) error
 }
 
-func NewHandler[T any](l logger.Logger,
+func NewHandler[T interface{}](l logger.Logger,
 	fn func(msg *sarama.ConsumerMessage, t T) error) *Handler[T] {
 	return &Handler[T]{
 		l:  l,

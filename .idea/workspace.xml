@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c578093-3a58-4997-b485-9bee9cb14fef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/slice/contains_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/slice/diff_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/slice/map_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ginx/handler_func.go" beforeDir="false" afterPath="$PROJECT_DIR$/ginx/handler_func.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ginx/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/ginx/types.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger/fields.go" beforeDir="false" afterPath="$PROJECT_DIR$/logger/fields.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/logger/types.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ptr.go" beforeDir="false" afterPath="$PROJECT_DIR$/ptr.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saramax/batch_handler_func.go" beforeDir="false" afterPath="$PROJECT_DIR$/saramax/batch_handler_func.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saramax/consumer_handler_func.go" beforeDir="false" afterPath="$PROJECT_DIR$/saramax/consumer_handler_func.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syncx/atomicx/atomic.go" beforeDir="false" afterPath="$PROJECT_DIR$/syncx/atomicx/atomic.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +91,7 @@
     "Go Test.TestDoubleWrite in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
     "Go Test.TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
     "Go Test.TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
+    "Go Test.TestFilterMap in github.com/bgq98/utils/slice.executor": "Debug",
     "Go Test.TestMap in github.com/bgq98/utils/slice.executor": "Debug",
     "Go Test.TestNewValueOf in github.com/bgq98/utils/syncx/atomicx.executor": "Debug",
     "Go Test.TestSetx_Delete in github.com/bgq98/utils/set.executor": "Debug",

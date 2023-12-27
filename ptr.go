@@ -16,6 +16,6 @@
 
 package utils
 
-func ToPtr[T any](t T) *T {
+func ToPtr[T interface{}](t T) *T {
 	return &t
 }

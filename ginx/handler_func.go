@@ -76,7 +76,7 @@ func WrapClaims(fn func(*gin.Context, UserClaims) (Result, error)) gin.HandlerFu
 }
 
 // WrapClaimsAndReq 如果做成中间件来源出去，那么直接耦合 UserClaims 也是不好的。
-func WrapClaimsAndReq[Req any](fn func(*gin.Context, Req, UserClaims) (Result, error)) gin.HandlerFunc {
+func WrapClaimsAndReq[Req interface{}](fn func(*gin.Context, Req, UserClaims) (Result, error)) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var req Req
 		if err := ctx.Bind(&req); err != nil {
@@ -110,7 +110,7 @@ func WrapClaimsAndReq[Req any](fn func(*gin.Context, Req, UserClaims) (Result, e
 }
 
 // WrapReq
-func WrapReq[Req any](fn func(*gin.Context, Req) (Result, error)) gin.HandlerFunc {
+func WrapReq[Req interface{}](fn func(*gin.Context, Req) (Result, error)) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var req Req
 		if err := ctx.Bind(&req); err != nil {
