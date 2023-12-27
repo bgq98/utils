@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c578093-3a58-4997-b485-9bee9cb14fef" name="Changes" comment="" />
+    <list default="true" id="5c578093-3a58-4997-b485-9bee9cb14fef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/slice/contains_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice/diff_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slice/map_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,30 +68,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;Go Test.DoubleWriteTestSuite in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
-    &quot;Go Test.TestDoubleWrite in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
-    &quot;Go Test.TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
-    &quot;Go Test.TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
-    &quot;Go Test.TestNewValueOf in github.com/bgq98/utils/syncx/atomicx.executor&quot;: &quot;Debug&quot;,
-    &quot;Go Test.TestSetx_Delete in github.com/bgq98/utils/set.executor&quot;: &quot;Debug&quot;,
-    &quot;Go Test.TestValue_CompareAndSwap in github.com/bgq98/utils/syncx/atomicx.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/biguanqun/go/src/utils&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Go Test.DoubleWriteTestSuite in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
+    "Go Test.ExampleDiffSet in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.ExampleDiffSetFunc in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.ExampleFilterMap in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.ExampleMap in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.TestContains/dst_exist in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.TestContains/dst_not_exist in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.TestContains/length_of_src_is_0 in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.TestContains/src_nil in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.TestContainsFunc in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.TestDiffSet in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.TestDiffSetFunc in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.TestDoubleWrite in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
+    "Go Test.TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
+    "Go Test.TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
+    "Go Test.TestMap in github.com/bgq98/utils/slice.executor": "Debug",
+    "Go Test.TestNewValueOf in github.com/bgq98/utils/syncx/atomicx.executor": "Debug",
+    "Go Test.TestSetx_Delete in github.com/bgq98/utils/set.executor": "Debug",
+    "Go Test.TestValue_CompareAndSwap in github.com/bgq98/utils/syncx/atomicx.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/biguanqun/go/src/utils",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "fileTemplates"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -96,77 +113,74 @@
       <recent name="$PROJECT_DIR$/redisx/metrics" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestSetx_Delete in github.com/bgq98/utils/set">
-    <configuration name="DoubleWriteTestSuite in github.com/bgq98/utils/gormx/connpool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestFilterMap in github.com/bgq98/utils/slice">
+    <configuration name="ExampleDiffSetFunc in github.com/bgq98/utils/slice" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="utils" />
-      <working_directory value="$PROJECT_DIR$/gormx/connpool" />
-      <parameters value=" -testify.m ^TestDoubleWriteTest|TestDoubleWriteTransaction$" />
+      <working_directory value="$PROJECT_DIR$/slice" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/bgq98/utils/gormx/connpool" />
+      <package value="github.com/bgq98/utils/slice" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestDoubleWrite\E$" />
+      <pattern value="^\QExampleDiffSetFunc\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestDoubleWrite in github.com/bgq98/utils/gormx/connpool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="ExampleFilterMap in github.com/bgq98/utils/slice" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="utils" />
-      <working_directory value="$PROJECT_DIR$/gormx/connpool" />
+      <working_directory value="$PROJECT_DIR$/slice" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/bgq98/utils/gormx/connpool" />
+      <package value="github.com/bgq98/utils/slice" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestDoubleWrite\E$" />
+      <pattern value="^\QExampleFilterMap\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="ExampleMap in github.com/bgq98/utils/slice" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="utils" />
-      <working_directory value="$PROJECT_DIR$/gormx/connpool" />
-      <parameters value=" -testify.m ^TestDoubleWriteTest$" />
+      <working_directory value="$PROJECT_DIR$/slice" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/bgq98/utils/gormx/connpool" />
+      <package value="github.com/bgq98/utils/slice" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestDoubleWrite\E$/^\QTestDoubleWriteTest\E$" />
+      <pattern value="^\QExampleMap\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestFilterMap in github.com/bgq98/utils/slice" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="utils" />
-      <working_directory value="$PROJECT_DIR$/gormx/connpool" />
-      <parameters value=" -testify.m ^TestDoubleWriteTransaction$" />
+      <working_directory value="$PROJECT_DIR$/slice" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/bgq98/utils/gormx/connpool" />
+      <package value="github.com/bgq98/utils/slice" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestDoubleWrite\E$/^\QTestDoubleWriteTransaction\E$" />
+      <pattern value="^\QTestFilterMap\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestSetx_Delete in github.com/bgq98/utils/set" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestMap in github.com/bgq98/utils/slice" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="utils" />
-      <working_directory value="$PROJECT_DIR$/set" />
+      <working_directory value="$PROJECT_DIR$/slice" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/bgq98/utils/set" />
+      <package value="github.com/bgq98/utils/slice" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestSetx_Delete\E$" />
+      <pattern value="^\QTestMap\E$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestSetx_Delete in github.com/bgq98/utils/set" />
-        <item itemvalue="Go Test.TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool" />
-        <item itemvalue="Go Test.TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool" />
-        <item itemvalue="Go Test.DoubleWriteTestSuite in github.com/bgq98/utils/gormx/connpool" />
-        <item itemvalue="Go Test.TestDoubleWrite in github.com/bgq98/utils/gormx/connpool" />
+        <item itemvalue="Go Test.TestFilterMap in github.com/bgq98/utils/slice" />
+        <item itemvalue="Go Test.TestMap in github.com/bgq98/utils/slice" />
+        <item itemvalue="Go Test.ExampleFilterMap in github.com/bgq98/utils/slice" />
+        <item itemvalue="Go Test.ExampleMap in github.com/bgq98/utils/slice" />
+        <item itemvalue="Go Test.ExampleDiffSetFunc in github.com/bgq98/utils/slice" />
       </list>
     </recent_temporary>
   </component>
@@ -180,6 +194,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
