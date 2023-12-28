@@ -82,8 +82,8 @@ func (v *Validator[T]) baseToTarget(ctx context.Context) error {
 		var src T
 		dbCtx, cancel := context.WithTimeout(ctx, time.Second)
 		err := v.base.WithContext(dbCtx).
-			Where("utime >= ?", v.utime).
-			Order("id").
+			Where("utime > ?", v.utime).
+			Order("utime asc,id asc").
 			Offset(offset).
 			First(&src).Error
 		cancel()
@@ -112,8 +112,10 @@ func (v *Validator[T]) targetToBase(ctx context.Context) error {
 		var ts []T
 		dbCtx, cancel := context.WithTimeout(ctx, time.Second)
 		err := v.base.WithContext(dbCtx).
+			Where("utime > ?", v.utime).
+			Select("id").
 			Offset(offset).Limit(v.batchSize).
-			Order("id").First(&ts).Error
+			Order("utime").First(&ts).Error
 		cancel()
 		if len(ts) == 0 {
 			return nil

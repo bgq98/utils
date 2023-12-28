@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c578093-3a58-4997-b485-9bee9cb14fef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/migrator/scheduler/scheduler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ginx/handler_func.go" beforeDir="false" afterPath="$PROJECT_DIR$/ginx/handler_func.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ginx/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/ginx/types.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logger/fields.go" beforeDir="false" afterPath="$PROJECT_DIR$/logger/fields.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logger/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/logger/types.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ptr.go" beforeDir="false" afterPath="$PROJECT_DIR$/ptr.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saramax/batch_handler_func.go" beforeDir="false" afterPath="$PROJECT_DIR$/saramax/batch_handler_func.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saramax/consumer_handler_func.go" beforeDir="false" afterPath="$PROJECT_DIR$/saramax/consumer_handler_func.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syncx/atomicx/atomic.go" beforeDir="false" afterPath="$PROJECT_DIR$/syncx/atomicx/atomic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ginx/middlewares/ratelimit/mocks/ratelimit.mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/ginx/middlewares/ratelimit/mocks/ratelimit.mock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrator/events/fixer/consumer.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrator/events/fixer/consumer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrator/validator/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrator/validator/validator.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +41,9 @@
     <setting file="file://$PROJECT_DIR$/ginx/middlewares/ratelimit/types.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/gormx/connpool/doublewrite.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/gormx/connpool/doublewrite_test.go" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/migrator/validator/types.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/migrator/events/fixer/consumer.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/migrator/scheduler/scheduler.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/migrator/validator/validator.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/saramax/batch_handler_func.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/saramax/consumer_handler_func.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/saramax/types.go" root0="SKIP_INSPECTION" />
@@ -73,43 +74,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "Go Test.DoubleWriteTestSuite in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
-    "Go Test.ExampleDiffSet in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.ExampleDiffSetFunc in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.ExampleFilterMap in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.ExampleMap in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestContains/dst_exist in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestContains/dst_not_exist in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestContains/length_of_src_is_0 in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestContains/src_nil in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestContainsFunc in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestDiffSet in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestDiffSetFunc in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestDoubleWrite in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
-    "Go Test.TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
-    "Go Test.TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool.executor": "Debug",
-    "Go Test.TestFilterMap in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestMap in github.com/bgq98/utils/slice.executor": "Debug",
-    "Go Test.TestNewValueOf in github.com/bgq98/utils/syncx/atomicx.executor": "Debug",
-    "Go Test.TestSetx_Delete in github.com/bgq98/utils/set.executor": "Debug",
-    "Go Test.TestValue_CompareAndSwap in github.com/bgq98/utils/syncx/atomicx.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/biguanqun/go/src/utils",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "fileTemplates"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Test.DoubleWriteTestSuite in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.ExampleDiffSet in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.ExampleDiffSetFunc in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.ExampleFilterMap in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.ExampleMap in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestContains/dst_exist in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestContains/dst_not_exist in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestContains/length_of_src_is_0 in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestContains/src_nil in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestContainsFunc in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestDiffSet in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestDiffSetFunc in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestDoubleWrite in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestDoubleWriteTest in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestDoubleWriteTransaction in github.com/bgq98/utils/gormx/connpool.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestFilterMap in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestMap in github.com/bgq98/utils/slice.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestNewValueOf in github.com/bgq98/utils/syncx/atomicx.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestSetx_Delete in github.com/bgq98/utils/set.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestValue_CompareAndSwap in github.com/bgq98/utils/syncx/atomicx.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/biguanqun/go/src/utils&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -182,10 +183,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestFilterMap in github.com/bgq98/utils/slice" />
         <item itemvalue="Go Test.TestMap in github.com/bgq98/utils/slice" />
-        <item itemvalue="Go Test.ExampleFilterMap in github.com/bgq98/utils/slice" />
+        <item itemvalue="Go Test.TestFilterMap in github.com/bgq98/utils/slice" />
         <item itemvalue="Go Test.ExampleMap in github.com/bgq98/utils/slice" />
+        <item itemvalue="Go Test.ExampleFilterMap in github.com/bgq98/utils/slice" />
         <item itemvalue="Go Test.ExampleDiffSetFunc in github.com/bgq98/utils/slice" />
       </list>
     </recent_temporary>

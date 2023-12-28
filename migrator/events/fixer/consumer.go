@@ -70,6 +70,7 @@ func (c *Consumer[T]) Start() error {
 		if err != nil {
 			c.l.Error("退出了消费循环异常", logger.Error(err))
 		}
+		c.l.Debug("消费成功!")
 	}()
 	return err
 }
@@ -78,10 +79,11 @@ func (c *Consumer[T]) Consume(msg *sarama.ConsumerMessage, evt events.Inconsiste
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 	switch evt.Direction {
-	case "SRC":
+	case "Src":
 		return c.srcFirst.Fix(ctx, evt.Id)
-	case "DST":
+	case "Dst":
 		return c.dstFirst.Fix(ctx, evt.Id)
+	default:
+		return errors.New("未知的校验方向")
 	}
-	return errors.New("未知的校验方向")
 }
