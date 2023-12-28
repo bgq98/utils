@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c578093-3a58-4997-b485-9bee9cb14fef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/migrator/scheduler/scheduler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ginx/handler_func.go" beforeDir="false" afterPath="$PROJECT_DIR$/ginx/handler_func.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ginx/middlewares/ratelimit/mocks/ratelimit.mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/ginx/middlewares/ratelimit/mocks/ratelimit.mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrator/events/fixer/consumer.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrator/events/fixer/consumer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrator/validator/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrator/validator/validator.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrator/validator/validator.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrator/validator/types.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
