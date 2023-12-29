@@ -100,6 +100,7 @@ func (v *Validator[T]) baseToTarget(ctx context.Context) error {
 			v.dstDiff(ctx, src)
 		default:
 			v.l.Error("base => target 查询源表失败", logger.Error(err))
+			time.Sleep(time.Second)
 		}
 		offset++
 	}
@@ -118,7 +119,11 @@ func (v *Validator[T]) targetToBase(ctx context.Context) error {
 			Order("utime").First(&ts).Error
 		cancel()
 		if len(ts) == 0 {
-			return nil
+			if v.sleepInterval <= 0 {
+				return nil
+			}
+			time.Sleep(v.sleepInterval)
+			continue
 		}
 		switch err {
 		case gorm.ErrRecordNotFound:

@@ -29,10 +29,10 @@ import (
 var errUnknownPattern = errors.New("未知的双写 pattern")
 
 const (
-	PatternSrcOnly  = "src_only"
-	PatternSrcFirst = "src_first"
-	PatternDstFirst = "dst_first"
-	PatternDstOnly  = "dst_only"
+	PatternSrcOnly  = "SRC_ONLY"
+	PatternSrcFirst = "SRC_FIRST"
+	PatternDstFirst = "DST_FIRST"
+	PatternDstOnly  = "DST_ONLY"
 )
 
 type DoubleWritePool struct {
@@ -97,11 +97,11 @@ func (d *DoubleWritePool) QueryRowContext(ctx context.Context, query string, arg
 	}
 }
 
-func NewDoubleWritePool(src *gorm.DB, dst *gorm.DB) *DoubleWritePool {
+func NewDoubleWritePool(src gorm.ConnPool, dst gorm.ConnPool, pattern string) *DoubleWritePool {
 	return &DoubleWritePool{
-		src:     src.ConnPool,
-		dst:     dst.ConnPool,
-		pattern: atomicx.NewValueOf(PatternSrcOnly),
+		src:     src,
+		dst:     dst,
+		pattern: atomicx.NewValueOf(pattern),
 	}
 }
 

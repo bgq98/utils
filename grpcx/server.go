@@ -20,6 +20,7 @@ import (
 	"context"
 	"net"
 	"strconv"
+	"time"
 
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"go.etcd.io/etcd/client/v3/naming/endpoints"
@@ -32,7 +33,7 @@ import (
 type Server struct {
 	*grpc.Server
 	Port        int
-	EtcdAddr    string
+	EtcdAddrs   []string
 	EtcdTTL     int64
 	etcdClient  *clientv3.Client
 	etcdManager endpoints.Manager
@@ -43,14 +44,12 @@ type Server struct {
 }
 
 func (s *Server) Serve() error {
-	ctx, cancel := context.WithCancel(context.Background())
-	s.cancel = cancel
 	port := strconv.Itoa(s.Port)
 	l, err := net.Listen("tcp", ":"+port)
 	if err != nil {
 		return err
 	}
-	err = s.register(ctx, port)
+	err = s.register()
 	if err != nil {
 		return err
 	}
@@ -58,8 +57,10 @@ func (s *Server) Serve() error {
 }
 
 // 使用 etcd 作为注册中心
-func (s *Server) register(ctx context.Context, port string) error {
-	cli, err := clientv3.NewFromURL("http:localhost:12379")
+func (s *Server) register() error {
+	cli, err := clientv3.New(clientv3.Config{
+		Endpoints: s.EtcdAddrs,
+	})
 	if err != nil {
 		return err
 	}
@@ -69,24 +70,31 @@ func (s *Server) register(ctx context.Context, port string) error {
 	if err != nil {
 		return err
 	}
-	s.etcdManager = em
-	ip := next.GetOutboundIp()
-	s.etcdKey = serviceName + "/" + ip
-	addr := ip + ":" + port
-	leaseResp, err := cli.Grant(ctx, s.EtcdTTL)
+	addr := next.GetOutboundIp() + ":" + strconv.Itoa(s.Port)
+	key := "service/" + s.Name + "/" + addr
+	s.etcdKey = key
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	var ttl int64 = 30
+	leaseResp, err := cli.Grant(ctx, ttl)
 
-	// 开启续约
-	ch, err := cli.KeepAlive(ctx, leaseResp.ID)
+	ctx, cancel = context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	err = em.AddEndpoint(ctx, key, endpoints.Endpoint{
+		Addr: addr,
+	}, clientv3.WithLease(leaseResp.ID))
+
+	kaCtx, kaCancel := context.WithTimeout(context.Background(), time.Second)
+	s.cancel = kaCancel
+	ch, err := cli.KeepAlive(kaCtx, leaseResp.ID)
 	if err != nil {
 		return err
 	}
 	go func() {
-		// 可以预期 当我们的 cancel 被调用时,就会退出这个循环
-		for chResp := range ch {
-			s.L.Debug("续约：", logger.String("resp", chResp.String()))
+		for kaResp := range ch {
+			s.L.Debug(kaResp.String())
 		}
 	}()
-	return em.AddEndpoint(ctx, s.etcdKey, endpoints.Endpoint{Addr: addr}, clientv3.WithLease(leaseResp.ID))
+	return nil
 }
 
 func (s *Server) Close() error {
