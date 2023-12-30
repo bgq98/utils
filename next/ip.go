@@ -19,6 +19,7 @@ package next
 import "net"
 
 func GetOutboundIp() string {
+	// dns 的地址,国内可以用 114.114.114.114
 	conn, err := net.Dial("udp", "8.8.8.8:80")
 	if err != nil {
 		return ""

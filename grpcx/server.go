@@ -44,8 +44,7 @@ type Server struct {
 }
 
 func (s *Server) Serve() error {
-	port := strconv.Itoa(s.Port)
-	l, err := net.Listen("tcp", ":"+port)
+	l, err := net.Listen("tcp", ":"+strconv.Itoa(s.Port))
 	if err != nil {
 		return err
 	}
@@ -74,8 +73,7 @@ func (s *Server) register() error {
 	key := "service/" + s.Name + "/" + addr
 	s.etcdKey = key
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	var ttl int64 = 30
-	leaseResp, err := cli.Grant(ctx, ttl)
+	leaseResp, err := cli.Grant(ctx, s.EtcdTTL)
 
 	ctx, cancel = context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
@@ -83,7 +81,7 @@ func (s *Server) register() error {
 		Addr: addr,
 	}, clientv3.WithLease(leaseResp.ID))
 
-	kaCtx, kaCancel := context.WithTimeout(context.Background(), time.Second)
+	kaCtx, kaCancel := context.WithCancel(context.Background())
 	s.cancel = kaCancel
 	ch, err := cli.KeepAlive(kaCtx, leaseResp.ID)
 	if err != nil {
@@ -98,7 +96,9 @@ func (s *Server) register() error {
 }
 
 func (s *Server) Close() error {
-	s.cancel()
+	if s.cancel != nil {
+		s.cancel()
+	}
 	if s.etcdManager != nil {
 		ctx, cancel := context.WithCancel(context.Background())
 		defer cancel()
