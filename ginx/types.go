@@ -37,6 +37,7 @@ type UserClaims struct {
 	Id        int64
 	UserAgent string
 	Ssid      string
+	VIP       bool
 	jwt.RegisteredClaims
 }
 
