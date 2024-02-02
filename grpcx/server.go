@@ -35,7 +35,7 @@ type Server struct {
 	Port        int
 	EtcdAddrs   []string
 	EtcdTTL     int64
-	etcdClient  *clientv3.Client
+	EtcdClient  *clientv3.Client
 	etcdManager endpoints.Manager
 	etcdKey     string
 	cancel      func()
@@ -63,7 +63,7 @@ func (s *Server) register() error {
 	if err != nil {
 		return err
 	}
-	s.etcdClient = cli
+	s.EtcdClient = cli
 	serviceName := "service/" + s.Name
 	em, err := endpoints.NewManager(cli, serviceName)
 	if err != nil {
@@ -107,7 +107,7 @@ func (s *Server) Close() error {
 			return err
 		}
 	}
-	err := s.etcdClient.Close()
+	err := s.EtcdClient.Close()
 	if err != nil {
 		return err
 	}
