@@ -38,9 +38,9 @@ func (s *DoubleWriteTestSuite) SetupSuite() {
 	s.db = doubleWrite
 }
 
-// func (s *DoubleWriteTestSuite) TearDownTest() {
-// 	s.db.Exec("TRUNCATE TABLE interactives")
-// }
+func (s *DoubleWriteTestSuite) TearDownTest() {
+	s.db.Exec("TRUNCATE TABLE interactives")
+}
 
 // 集成测试，需要启动数据库
 func (s *DoubleWriteTestSuite) TestDoubleWriteTest() {

@@ -79,13 +79,13 @@ func (v *Validator[T]) Validate(ctx context.Context) error {
 func (v *Validator[T]) baseToTarget(ctx context.Context) error {
 	offset := 0
 	for {
-		var src T
+		var ts []T
 		dbCtx, cancel := context.WithTimeout(ctx, time.Second)
 		err := v.base.WithContext(dbCtx).
-			Where("utime > ?", v.utime).
+			Where("utime >= ?", v.utime).
 			Order("utime asc,id asc").
-			Offset(offset).
-			First(&src).Error
+			Offset(offset).Limit(v.batchSize).
+			Find(&ts).Error
 		cancel()
 		switch err {
 		case gorm.ErrRecordNotFound:
@@ -97,26 +97,28 @@ func (v *Validator[T]) baseToTarget(ctx context.Context) error {
 		case context.DeadlineExceeded, context.Canceled:
 			return nil
 		case nil:
-			v.dstDiff(ctx, src)
+			v.targetMissingRecords(ctx, ts)
 		default:
 			v.l.Error("base => target 查询源表失败", logger.Error(err))
 			time.Sleep(time.Second)
 		}
-		offset++
+		if len(ts) < v.batchSize {
+			// 没数据了 退出循环
+			return nil
+		}
+		offset += v.batchSize
 	}
 }
 
 func (v *Validator[T]) targetToBase(ctx context.Context) error {
-	// 先找 target 再找 base 再找 base 中已经删除的
+	// 先找 target 再找 base 中已经删除的
 	offset := 0
 	for {
 		var ts []T
 		dbCtx, cancel := context.WithTimeout(ctx, time.Second)
-		err := v.base.WithContext(dbCtx).
-			Where("utime > ?", v.utime).
-			Select("id").
-			Offset(offset).Limit(v.batchSize).
-			Order("utime").First(&ts).Error
+		err := v.target.WithContext(dbCtx).Model(new(T)).
+			Select("id").Offset(offset).
+			Limit(v.batchSize).Find(&ts).Error
 		cancel()
 		if len(ts) == 0 {
 			if v.sleepInterval <= 0 {
@@ -147,6 +149,73 @@ func (v *Validator[T]) targetToBase(ctx context.Context) error {
 	}
 }
 
+func (v *Validator[T]) baseMissingRecords(ctx context.Context, ts []T) {
+	ids := slice.Map[T, int64](ts, func(idx int, src T) int64 {
+		return src.ID()
+	})
+	dbCtx, cancel := context.WithTimeout(ctx, time.Second)
+	defer cancel()
+	base := v.base.WithContext(dbCtx)
+	var srcTs []T
+	err := base.Select("id").Where("id in ?", ids).Find(&srcTs).Error
+	switch err {
+	case gorm.ErrRecordNotFound:
+		// 说明 ids 都没有
+		v.notifyBaseMissing(ts, events.InconsistentEventTypeBaseMissing)
+	case nil:
+		// 计算差集
+		missing := slice.DiffSetFunc[T](ts, srcTs, func(src, dst T) bool {
+			return src.ID() == dst.ID()
+		})
+		v.notifyBaseMissing(missing, events.InconsistentEventTypeBaseMissing)
+	default:
+		v.l.Error("targe => base 查询源表失败", logger.Error(err))
+	}
+}
+
+func (v *Validator[T]) targetMissingRecords(ctx context.Context, ts []T) {
+	ids := slice.Map[T, int64](ts, func(idx int, src T) int64 {
+		return src.ID()
+	})
+	dbCtx, cancel := context.WithTimeout(ctx, time.Second)
+	defer cancel()
+	var srcTs []T
+	target := v.target.WithContext(dbCtx)
+	err := target.Select("id").Where("id in ?", ids).Find(&srcTs).Error
+	switch err {
+	case gorm.ErrRecordNotFound:
+		v.notifyTargetMissing(ts, events.InconsistentEventTypeTargetMissing)
+	case nil:
+		missing := slice.DiffSetFunc[T](ts, srcTs, func(src, dst T) bool {
+			if !src.CompareTo(dst) {
+				return src.ID() == dst.ID()
+			}
+			return false
+		})
+		v.notifyTargetNotEqual(missing, events.InconsistentEventTypeNotEqual)
+	default:
+		v.l.Error("base => target 查询目标表失败", logger.Error(err))
+	}
+}
+
+func (v *Validator[T]) notifyBaseMissing(ts []T, typ string) {
+	for _, t := range ts {
+		v.notify(t.ID(), typ)
+	}
+}
+
+func (v *Validator[T]) notifyTargetMissing(ts []T, typ string) {
+	for _, t := range ts {
+		v.notify(t.ID(), typ)
+	}
+}
+
+func (v *Validator[T]) notifyTargetNotEqual(ts []T, typ string) {
+	for _, t := range ts {
+		v.notify(t.ID(), typ)
+	}
+}
+
 func (v *Validator[T]) notify(id int64, typ string) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
@@ -161,53 +230,5 @@ func (v *Validator[T]) notify(id int64, typ string) {
 		// 记录日志,告警手动去修
 		// 或者下一轮修复和校验还会找出来
 		v.l.Error("发送 kafka 失败", logger.Error(err))
-	}
-}
-
-func (v *Validator[T]) notifyBaseMissing(ts []T) {
-	for _, t := range ts {
-		v.notify(t.ID(), events.InconsistentEventTypeBaseMissing)
-	}
-}
-
-func (v *Validator[T]) baseMissingRecords(ctx context.Context, ts []T) {
-	ids := slice.Map(ts, func(idx int, src T) int64 {
-		return src.ID()
-	})
-	dbCtx, cancel := context.WithTimeout(ctx, time.Second)
-	defer cancel()
-	base := v.base.WithContext(dbCtx)
-	var srcTs []T
-	err := base.Select("id").Where("id in ?", ids).Find(&srcTs).Error
-	switch err {
-	case gorm.ErrRecordNotFound:
-		// 说明 ids 都没有
-		v.notifyBaseMissing(ts)
-	case nil:
-		// 计算差集
-		missing := slice.DiffSetFunc(ts, srcTs, func(src, dst T) bool {
-			return src.ID() == dst.ID()
-		})
-		v.notifyBaseMissing(missing)
-	default:
-		v.l.Error("targe => base 查询源表失败", logger.Error(err))
-	}
-}
-
-func (v *Validator[T]) dstDiff(ctx context.Context, src T) {
-	var dst T
-	dbCtx, cancel := context.WithTimeout(ctx, time.Second)
-	err := v.target.WithContext(dbCtx).Where("id = ?", src.ID()).First(&dst).Error
-	cancel()
-	switch err {
-	case gorm.ErrRecordNotFound:
-		v.notify(src.ID(), events.InconsistentEventTypeTargetMissing)
-	case nil:
-		equal := src.CompareTo(dst)
-		if !equal {
-			v.notify(src.ID(), events.InconsistentEventTypeNotEqual)
-		}
-	default:
-		v.l.Error("base => target 查询目标表失败", logger.Error(err))
 	}
 }
